@@ -13,8 +13,7 @@
 
 <style>
 :root {
-  --green-dark: #0a5c21; /* হেডারের গাঢ় সবুজ */
-  --green-light: #0d7028;
+  --green-dark: #0a5c21; 
   --bg-color: #ffffff;
   --card-bg: #ffffff;
   --text-dark: #222222;
@@ -29,28 +28,35 @@ body {
   font-family: 'Hind Siliguri', sans-serif;
 }
 
-/* --- হেডার সেকশন --- */
+/* --- হেডার সেকশন (আগের চেয়ে ছোট করা হয়েছে) --- */
 header {
   background: linear-gradient(to bottom, #0b5e22, #084a1a);
-  padding: 30px 20px 25px;
+  padding: 15px 10px 12px; /* প্যাডিং কমিয়ে ছোট করা হয়েছে */
   text-align: center;
-  border-bottom: 5px solid #8bc34a; /* হালকা সবুজ বর্ডার */
+  border-bottom: 4px solid #8bc34a; 
 }
 
 .arabic-logo {
   color: #fff;
-  font-size: 38px;
-  margin-bottom: 10px;
-  /* আরবি লেখার জন্য একটি সুন্দর ফন্ট */
+  font-size: 28px; /* আরবি ফন্ট ছোট করা হয়েছে */
+  margin-bottom: 5px;
   font-family: 'Traditional Arabic', 'Scheherazade', serif; 
   line-height: 1.2;
 }
 
 .bangla-title {
   color: #fff;
-  font-size: 26px;
+  font-size: 20px; /* বাংলা টাইটেল ফন্ট ছোট করা হয়েছে */
   font-weight: 600;
   margin: 0;
+}
+
+/* আজকের তারিখের স্টাইল */
+.date-text {
+  color: #e0f2e9; /* হালকা সবুজাভ সাদা রঙ */
+  font-size: 15px;
+  margin-top: 5px;
+  font-weight: 500;
 }
 
 /* --- মূল কন্টেন্ট --- */
@@ -65,17 +71,17 @@ main {
   background-color: #0a5c21;
   color: #fff;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px; /* বাটনের ফন্ট সাইজ একটু কমানো হয়েছে */
   font-weight: 600;
-  padding: 10px 35px;
+  padding: 8px 30px;
   border-radius: 50px;
   width: fit-content;
-  margin: 30px auto 35px;
+  margin: 20px auto 25px;
 }
 
 /* --- কার্ড লিস্ট --- */
 .prayer-container {
-  background-color: #f7fcf8; /* হালকা সবুজাভ ব্যাকগ্রাউন্ড */
+  background-color: #f7fcf8; 
   padding: 15px;
   border-radius: 10px;
 }
@@ -83,13 +89,13 @@ main {
 .prayer-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 .prayer-card {
   background: var(--card-bg);
   border-radius: 10px;
-  padding: 15px 20px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -100,48 +106,46 @@ main {
 .prayer-info {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .icon-box {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background: #f0f4f1;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .prayer-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: #111;
 }
 
 .prayer-time {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #111;
-  letter-spacing: 0.5px;
 }
 
-/* ফুটার */
 footer {
   text-align: center;
   padding: 20px;
   color: #666;
-  font-size: 14px;
+  font-size: 13px;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <!-- আরবি লোগো (এখানে আপনার মসজিদের আসল আরবি নামের ছবি দিতে পারেন, আপাতত টেক্সট দেওয়া হলো) -->
   <div class="arabic-logo">المعهد العالي للفقه في الدين</div>
   <h1 class="bangla-title">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন</h1>
+  <div class="date-text" id="todayDate">তারিখ লোড হচ্ছে...</div>
 </header>
 
 <main>
@@ -159,7 +163,14 @@ footer {
 </footer>
 
 <script>
-// আপনার দেওয়া জামাতের সময়গুলো এখানে বসানো হলো
+// ১. আজকের তারিখ ও বার অটোমেটিক দেখানোর কোড
+const todayDateElement = document.getElementById("todayDate");
+const today = new Date();
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+// বাংলা ফরম্যাটে তারিখ সেট করা
+todayDateElement.textContent = today.toLocaleDateString('bn-BD', options);
+
+// ২. আপনার দেওয়া জামাতের সময়গুলো
 const mosqueData = [
   { name: "الفجر", time: "৫:১৫ AM", icon: "🌅" },
   { name: "الظهر", time: "১:৪৫ PM", icon: "☀️" },
