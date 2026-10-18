@@ -3,232 +3,184 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f4f7f5">
+<meta name="theme-color" content="#0b5a45">
 <title>আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন | নামাযের সময়</title>
 
-<!-- Google Fonts: Hind Siliguri -->
+<!-- ফন্ট: হিন্দ শিলিগুড়ি -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #f4f7f5; 
-  --green: #13785b; 
-  --text-dark: #111;
+  --green-dark: #0a5c21; /* হেডারের গাঢ় সবুজ */
+  --green-light: #0d7028;
+  --bg-color: #ffffff;
   --card-bg: #ffffff;
+  --text-dark: #222222;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
-  background-color: var(--bg);
+  background-color: var(--bg-color);
   color: var(--text-dark);
-  /* এখানে Hind Siliguri ফন্ট সেট করা হলো */
-  font-family: 'Hind Siliguri', sans-serif; 
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Hind Siliguri', sans-serif;
 }
 
-/* হেডার ডিজাইন */
+/* --- হেডার সেকশন --- */
 header {
-  background: #eaf1ec;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #dce5df;
-}
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--green);
-  font-size: 22px;
-  font-weight: 700;
-}
-.logo-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid var(--green);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
+  background: linear-gradient(to bottom, #0b5e22, #084a1a);
+  padding: 30px 20px 25px;
+  text-align: center;
+  border-bottom: 5px solid #8bc34a; /* হালকা সবুজ বর্ডার */
 }
 
-/* মূল কন্টেন্ট এরিয়া */
-.wrap {
-  width: min(600px, 100% - 30px);
-  margin: 20px auto;
+.arabic-logo {
+  color: #fff;
+  font-size: 38px;
+  margin-bottom: 10px;
+  /* আরবি লেখার জন্য একটি সুন্দর ফন্ট */
+  font-family: 'Traditional Arabic', 'Scheherazade', serif; 
+  line-height: 1.2;
 }
 
-.top-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.top-title h2 {
-  font-size: 22px;
+.bangla-title {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
   margin: 0;
-  color: #111;
-  font-weight: 600;
-}
-.lang-btn {
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--green);
-  cursor: pointer;
 }
 
-/* নামাজের কার্ড লিস্ট */
+/* --- মূল কন্টেন্ট --- */
+main {
+  width: min(600px, 100% - 30px);
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* সবুজ গোলাকার বাটন */
+.title-badge {
+  background-color: #0a5c21;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 35px;
+  border-radius: 50px;
+  width: fit-content;
+  margin: 30px auto 35px;
+}
+
+/* --- কার্ড লিস্ট --- */
+.prayer-container {
+  background-color: #f7fcf8; /* হালকা সবুজাভ ব্যাকগ্রাউন্ড */
+  padding: 15px;
+  border-radius: 10px;
+}
+
 .prayer-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
+
 .prayer-card {
   background: var(--card-bg);
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 10px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border: 1px solid #eaeaea;
 }
+
 .prayer-info {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 .icon-box {
   width: 50px;
   height: 50px;
-  background: #f8faf9;
+  background: #f0f4f1;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 26px;
 }
+
 .prayer-name {
-  font-size: 22px; /* ফন্ট সাইজ বড় করা হয়েছে */
+  font-size: 22px;
   font-weight: 600;
-  color: #222;
+  color: #111;
 }
+
 .prayer-time {
-  font-size: 24px; /* সময়ের ফন্ট সাইজ বড় করা হয়েছে */
+  font-size: 24px;
   font-weight: 700;
   color: #111;
   letter-spacing: 0.5px;
 }
 
-/* নোটিশ সেকশন */
-.notice-section {
-  margin-top: 30px;
-}
-.notice-section h3 {
-  font-size: 20px;
-  color: #222;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.notice-box {
-  background: #eaf1ec;
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 4px solid var(--green);
-  font-size: 16px;
-  color: #333;
-}
-
 /* ফুটার */
 footer {
   text-align: center;
-  padding: 30px 10px;
+  padding: 20px;
   color: #666;
-  font-size: 15px;
+  font-size: 14px;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-area">
-    <div class="logo-icon">🕌</div>
-    <span>আল মাহাদুল আলী</span>
-  </div>
+  <!-- আরবি লোগো (এখানে আপনার মসজিদের আসল আরবি নামের ছবি দিতে পারেন, আপাতত টেক্সট দেওয়া হলো) -->
+  <div class="arabic-logo">المعهد العالي للفقه في الدين</div>
+  <h1 class="bangla-title">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন</h1>
 </header>
 
-<main class="wrap">
-  <div class="top-title">
-    <h2 id="pageTitle">জামাতের সময়সূচি</h2>
-    <button class="lang-btn" id="langBtn" type="button">English</button>
-  </div>
+<main>
+  <div class="title-badge">নামাযের সময়সূচি</div>
 
-  <div class="prayer-list" id="prayerGrid">
-    <!-- জাভাস্ক্রিপ্ট দিয়ে এখানে কার্ড তৈরি হবে -->
-  </div>
-
-  <div class="notice-section">
-    <h3 id="noticeHeading">নোটিশ বোর্ড</h3>
-    <div class="notice-box">
-      <div id="noticeText">মসজিদের যেকোনো গুরুত্বপূর্ণ ঘোষণা এখানে প্রকাশ করা হবে।</div>
+  <div class="prayer-container">
+    <div class="prayer-list" id="prayerGrid">
+      <!-- জাভাস্ক্রিপ্ট দিয়ে কার্ড তৈরি হবে -->
     </div>
   </div>
 </main>
 
-<footer id="footerText">
+<footer>
   আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন
 </footer>
 
 <script>
-// আপনার নামাজের সময়
-const mosqueData = {
-  prayers: [
-    { bn: "ফজর", en: "Fajr", jamaat: "৫:১৫ AM", icon: "🌅" },
-    { bn: "যোহর", en: "Dhuhr", jamaat: "১:৪৫ PM", icon: "☀️" },
-    { bn: "আসর", en: "Asr", jamaat: "৪:৩০ PM", icon: "🌤️" },
-    { bn: "মাগরিব", en: "Maghrib", jamaat: "৫:৪৫ PM", icon: "🌇" },
-    { bn: "এশা", en: "Isha", jamaat: "৯:১৫ PM", icon: "🌙" }
-  ],
-  notice_bn: "মসজিদের যেকোনো গুরুত্বপূর্ণ ঘোষণা এখানে প্রকাশ করা হবে।",
-  notice_en: "Any important mosque announcements will be published here."
-};
+// আপনার দেওয়া জামাতের সময়গুলো এখানে বসানো হলো
+const mosqueData = [
+  { name: "ফজর", time: "৫:১৫ AM", icon: "🌅" },
+  { name: "যুহর", time: "১:৪৫ PM", icon: "☀️" },
+  { name: "আসর", time: "৪:৩০ PM", icon: "🌤️" },
+  { name: "মাগরিব", time: "৫:৪৫ PM", icon: "🌇" },
+  { name: "ইশা", time: "৯:১৫ PM", icon: "🌙" }
+];
 
-let lang = "bn";
-const $ = id => document.getElementById(id);
+// কার্ডগুলো ওয়েবসাইটে দেখানোর কোড
+const grid = document.getElementById("prayerGrid");
 
-function render() {
-  document.documentElement.lang = lang;
-  
-  $("pageTitle").textContent = lang === "bn" ? "জামাতের সময়সূচি" : "Jamaat Timetable";
-  $("langBtn").textContent = lang === "bn" ? "English" : "বাংলা";
-  $("noticeHeading").textContent = lang === "bn" ? "নোটিশ বোর্ড" : "Notice Board";
-  $("noticeText").textContent = lang === "bn" ? mosqueData.notice_bn : mosqueData.notice_en;
-  $("footerText").textContent = lang === "bn" ? "আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন" : "Al Mahadul Ali Lil Fiqh Fid-Din";
-
-  $("prayerGrid").innerHTML = mosqueData.prayers.map(p => `
-    <div class="prayer-card">
-      <div class="prayer-info">
-        <div class="icon-box">${p.icon}</div>
-        <div class="prayer-name">${lang === "bn" ? p.bn : p.en}</div>
-      </div>
-      <div class="prayer-time">${p.jamaat}</div>
+grid.innerHTML = mosqueData.map(p => `
+  <div class="prayer-card">
+    <div class="prayer-info">
+      <div class="icon-box">${p.icon}</div>
+      <div class="prayer-name">${p.name}</div>
     </div>
-  `).join("");
-}
+    <div class="prayer-time">${p.time}</div>
+  </div>
+`).join("");
 
-$("langBtn").addEventListener("click", () => {
-  lang = lang === "bn" ? "en" : "bn";
-  render();
-});
-
-render();
 </script>
 
 </body>
