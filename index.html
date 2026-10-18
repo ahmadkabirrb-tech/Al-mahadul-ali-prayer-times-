@@ -1,1 +1,83 @@
-
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b5a45">
+<title>আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন | নামাযের সময়</title>
+<style>
+:root{--green:#0b5a45;--green2:#13785b;--gold:#d9b76e;--ink:#18342d;--muted:#687a74;--paper:#f5f8f5;--white:#fff;--line:#e0e9e3}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali","Noto Sans",sans-serif}
+header{background:linear-gradient(135deg,#073e32,#13785b);color:#fff;padding:30px 16px 26px;text-align:center;border-bottom:4px solid var(--gold)}
+.moon{font-size:30px;color:var(--gold)}h1{font-size:clamp(22px,5vw,34px);line-height:1.45;margin:8px auto;max-width:760px}header p{margin:5px 0;color:#e4f1eb}
+.wrap{width:min(900px,100% - 28px);margin:20px auto 40px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.date{font-size:14px;color:var(--muted)}button{border:1px solid #b9d1c5;background:#fff;color:var(--green);padding:9px 13px;border-radius:10px;font-weight:700;cursor:pointer}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px;box-shadow:0 5px 20px #143d2a08}
+h2{font-size:19px;margin:0 0 14px;color:var(--green)}.prayers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.prayer{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fcfefc}.prayer .name{font-weight:800;font-size:17px}.times{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:13px;color:var(--muted)}.times strong{display:block;color:var(--ink);font-size:18px;margin-top:2px}
+.notice{padding:13px;border-radius:12px;background:#f9f4e8;border-left:4px solid var(--gold);margin:9px 0}.notice strong{display:block;margin-bottom:4px}.empty{color:var(--muted);font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 10px 28px}
+@media(min-width:650px){.prayers{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:22px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="moon">☾</div>
+  <h1 id="mosqueName">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন</h1>
+  <p id="subtitle">নামাযের সময়সূচি ও মসজিদের ঘোষণা</p>
+  <p lang="ar" dir="rtl">مواقيت الصلاة والإعلانات</p>
+</header>
+<main class="wrap">
+  <div class="topline">
+    <div class="date" id="today">আজকের তারিখ</div>
+    <button id="langBtn" type="button">English</button>
+  </div>
+  <section class="card">
+    <h2 id="timesHeading">আজকের নামাযের সময়</h2>
+    <div class="prayers" id="prayerGrid"></div>
+    <p class="empty" id="timeNote">সময় পরিবর্তন হলে মসজিদের দায়িত্বশীল ব্যক্তির প্রকাশিত আপডেট অনুসরণ করুন।</p>
+  </section>
+  <section class="card">
+    <h2 id="noticeHeading">নোটিশ ও ঘোষণা</h2>
+    <div id="noticeList"></div>
+  </section>
+  <footer id="footerText">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন · সর্বশেষ তথ্যের জন্য মসজিদের নোটিশ অনুসরণ করুন</footer>
+</main>
+<script>
+/*
+  আপডেট করার নিয়ম:
+  নিচের mosqueData অংশে সময়/নোটিশ বদলান। সময় ১২ ঘণ্টার বাংলা/ইংরেজি ফরম্যাটে লিখতে পারেন।
+  GitHub-এ index.html সম্পাদনা করে Commit changes করলে ওয়েবসাইটে আপডেট প্রকাশ হবে।
+*/
+const mosqueData = {
+  updated: "প্রাথমিক নমুনা — প্রকৃত সময় বসাতে হবে",
+  prayers: [
+    {bn:"ফজর", en:"Fajr", adhan:"—", jamaat:"—"},
+    {bn:"যোহর", en:"Dhuhr", adhan:"—", jamaat:"—"},
+    {bn:"আসর", en:"Asr", adhan:"—", jamaat:"—"},
+    {bn:"মাগরিব", en:"Maghrib", adhan:"—", jamaat:"—"},
+    {bn:"এশা", en:"Isha", adhan:"—", jamaat:"—"}
+  ],
+  notices: [
+    {date:"", title_bn:"স্বাগতম", title_en:"Welcome", body_bn:"এই ওয়েবসাইটে মসজিদের নামাযের সময় ও গুরুত্বপূর্ণ ঘোষণা প্রকাশ করা হবে।", body_en:"Prayer times and important mosque announcements will be published here."}
+  ]
+};
+let lang = "bn";
+const $ = id => document.getElementById(id);
+function render(){
+  document.documentElement.lang = lang;
+  $("langBtn").textContent = lang==="bn" ? "English" : "বাংলা";
+  $("subtitle").textContent = lang==="bn" ? "নামাযের সময়সূচি ও মসজিদের ঘোষণা" : "Prayer timetable and mosque announcements";
+  $("timesHeading").textContent = lang==="bn" ? "আজকের নামাযের সময়" : "Prayer Times";
+  $("noticeHeading").textContent = lang==="bn" ? "নোটিশ ও ঘোষণা" : "Notices & Announcements";
+  $("timeNote").textContent = lang==="bn" ? "সময় পরিবর্তন হলে মসজিদের দায়িত্বশীল ব্যক্তির প্রকাশিত আপডেট অনুসরণ করুন।" : "Please follow the latest update published by the mosque administrator.";
+  $("footerText").textContent = lang==="bn" ? "আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন · সর্বশেষ তথ্যের জন্য মসজিদের নোটিশ অনুসরণ করুন" : "Al Mahadul Ali Lil Fiqh Fid-Din · Follow mosque notices for the latest information";
+  $("today").textContent = new Date().toLocaleDateString(lang==="bn"?"bn-BD":"en-GB",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+  $("prayerGrid").innerHTML = mosqueData.prayers.map(p=>`<article class="prayer"><div class="name">${lang==="bn"?p.bn:p.en}</div><div class="times"><div>${lang==="bn"?"আযান":"Adhan"}<strong>${p.adhan}</strong></div><div>${lang==="bn"?"জামাত":"Jamaat"}<strong>${p.jamaat}</strong></div></div></article>`).join("");
+  $("noticeList").innerHTML = mosqueData.notices.length ? mosqueData.notices.map(n=>`<article class="notice">${n.date?`<small>${n.date}</small>`:""}<strong>${lang==="bn"?n.title_bn:n.title_en}</strong><div>${lang==="bn"?n.body_bn:n.body_en}</div></article>`).join("") : `<p class="empty">${lang==="bn"?"এখন কোনো নোটিশ নেই।":"No notices at the moment."}</p>`;
+}
+$("langBtn").addEventListener("click",()=>{lang=lang==="bn"?"en":"bn";render()});
+render();
+</script>
+</body>
+</html>
