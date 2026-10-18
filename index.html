@@ -46,17 +46,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 10px 28px
 <script>
 /*
   আপডেট করার নিয়ম:
-  নিচের mosqueData অংশে সময়/নোটিশ বদলান। সময় ১২ ঘণ্টার বাংলা/ইংরেজি ফরম্যাটে লিখতে পারেন।
-  GitHub-এ index.html সম্পাদনা করে Commit changes করলে ওয়েবসাইটে আপডেট প্রকাশ হবে।
+  নিচের mosqueData অংশে সময়/নোটিশ বদলান।
 */
 const mosqueData = {
-  updated: "প্রাথমিক নমুনা — প্রকৃত সময় বসাতে হবে",
+  updated: "আজকের সময়সূচি",
   prayers: [
-    {bn:"ফজর", en:"Fajr", adhan:"—", jamaat:"—"},
-    {bn:"যোহর", en:"Dhuhr", adhan:"—", jamaat:"—"},
-    {bn:"আসর", en:"Asr", adhan:"—", jamaat:"—"},
-    {bn:"মাগরিব", en:"Maghrib", adhan:"—", jamaat:"—"},
-    {bn:"এশা", en:"Isha", adhan:"—", jamaat:"—"}
+    {bn:"ফজর", en:"Fajr", adhan:"৫:১৫ AM", jamaat:"৫:১৫ AM"},
+    {bn:"যোহর", en:"Dhuhr", adhan:"১:৪৫ PM", jamaat:"১:৪৫ PM"},
+    {bn:"আসর", en:"Asr", adhan:"৪:৩০ PM", jamaat:"৪:৩০ PM"},
+    {bn:"মাগরিব", en:"Maghrib", adhan:"৫:৪৫ PM", jamaat:"৫:৪৫ PM"},
+    {bn:"এশা", en:"Isha", adhan:"৯:১৫ PM", jamaat:"৯:১৫ PM"}
   ],
   notices: [
     {date:"", title_bn:"স্বাগতম", title_en:"Welcome", body_bn:"এই ওয়েবসাইটে মসজিদের নামাযের সময় ও গুরুত্বপূর্ণ ঘোষণা প্রকাশ করা হবে।", body_en:"Prayer times and important mosque announcements will be published here."}
