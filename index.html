@@ -3,182 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>আল মাহাদুল আলী | জামাতের সময়সূচি</title>
+<meta name="theme-color" content="#0f172a">
+<title>আল মাহাদুল আলী | নামাযের সময়সূচি</title>
 
-<!-- ফন্টস: হিন্দ শিলিগুড়ি এবং Amiri (আরবি) -->
+<!-- ফন্টস: হিন্দ শিলিগুড়ি (বাংলা) এবং Amiri (আরবি) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary-color: #0f4c3a; /* গাঢ় সবুজ */
-  --bg-color: #ffffff; /* পরিষ্কার সাদা ব্যাকগ্রাউন্ড */
-  --card-bg: #ffffff;
-  --border-color: #e5e7eb;
   --text-main: #111827;
-  --text-muted: #6b7280;
+  --text-muted: #4b5563;
+  --green-primary: #0f4c3a;
+  --green-light: #eaf4ee;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-main);
   font-family: 'Hind Siliguri', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* এখানে আপনার প্রতিষ্ঠানের ছবি বসাবেন */
+  background-image: url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=1000&auto=format&fit=crop'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  position: relative;
 }
 
-/* --- প্রিমিয়াম হেডার সেকশন --- */
-header {
-  background-color: var(--primary-color);
-  /* হালকা ইসলামিক প্যাটার্ন ব্যাকগ্রাউন্ড */
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  padding: 35px 20px 30px;
+/* ছবির ওপর একটি কালো ওভারলে (যাতে লেখা স্পষ্ট দেখা যায়) */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: -1;
+}
+
+/* --- হেডার সেকশন --- */
+.header-section {
   text-align: center;
-  border-bottom: 3px solid #d4af37; /* সোনালী বর্ডার */
+  margin-bottom: 25px;
+  z-index: 1;
 }
 
 .arabic-logo {
   color: #ffffff;
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 42px; /* বড় এবং সুন্দর আরবি ফন্ট */
   font-family: 'Amiri', serif;
-  line-height: 1.3;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .bangla-title {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: 0.3px;
-  opacity: 0.9;
-}
-
-.date-text {
-  display: inline-block;
-  color: #d1d5db;
-  font-size: 13px;
-  margin-top: 15px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-/* --- মূল কন্টেন্ট --- */
-main {
-  width: min(500px, 100% - 32px);
-  margin: 30px auto 40px;
-}
-
-/* সেকশন হেডিং */
-.section-title {
-  text-align: center;
-  color: var(--text-main);
+  color: #b4e197; /* হালকা সবুজাভ রঙ */
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin: 0;
   letter-spacing: 0.5px;
 }
 
-/* --- মিনিমাল কার্ড লিস্ট --- */
+/* --- গ্লাস কার্ড (Glassmorphism) --- */
+.glass-container {
+  width: min(90%, 480px);
+  background: rgba(255, 255, 255, 0.85); /* স্বচ্ছ সাদা */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 40px 40px 20px 20px; /* উপরের কোণা বেশি গোল */
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  text-align: center;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* --- নামাজের লিস্ট --- */
 .prayer-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
 }
 
 .prayer-card {
-  background: var(--card-bg);
-  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 15px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  /* কার্ডে হালকা প্রফেশনাল শ্যাডো */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  border: 1px solid #f3f4f6;
 }
 
-.prayer-card:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.prayer-names {
+.prayer-info {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-.prayer-name-ar {
-  font-family: 'Amiri', serif;
+.icon-box {
+  width: 45px;
+  height: 45px;
+  background: #f0f9ff; /* হালকা নীলাভ ব্যাকগ্রাউন্ড */
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.prayer-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.prayer-time {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-main);
-  line-height: 1.2;
-  margin-bottom: 2px;
-}
-
-.prayer-name-bn {
-  font-size: 14px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* সময়ের ডিজাইন */
-.prayer-time {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--primary-color);
-  letter-spacing: 0.5px;
+  color: #000000;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  color: var(--text-muted);
-  font-size: 12px;
-  letter-spacing: 0.5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  z-index: 1;
 }
 </style>
 </head>
 <body>
 
-<header>
+<!-- হেডার -->
+<div class="header-section">
   <div class="arabic-logo">المعهد العالي للفقه في الدين</div>
   <h1 class="bangla-title">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন</h1>
-  <div class="date-text" id="todayDate">তারিখ লোড হচ্ছে...</div>
-</header>
+</div>
 
-<main>
-  <div class="section-title">জামাতের সময়সূচি</div>
+<!-- গ্লাস ইফেক্টের মূল বক্স -->
+<div class="glass-container">
+  <h2 class="section-title">নামাযের সময়সূচি</h2>
 
   <div class="prayer-list" id="prayerGrid">
     <!-- জাভাস্ক্রিপ্ট দিয়ে কার্ড তৈরি হবে -->
   </div>
-</main>
+</div>
 
 <footer>
   আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন
 </footer>
 
 <script>
-// তারিখ সেট করা
-const todayDateElement = document.getElementById("todayDate");
-const today = new Date();
-const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-todayDateElement.textContent = today.toLocaleDateString('bn-BD', options);
-
-// নামাজের তথ্য
+// আপনার দেওয়া জামাতের সময়গুলো
 const mosqueData = [
-  { ar: "الفجر", bn: "ফজর", time: "৫:১৫ AM" },
-  { ar: "الظهر", bn: "যোহর", time: "১:৪৫ PM" },
-  { ar: "العصر", bn: "আসর", time: "৪:৩০ PM" },
-  { ar: "المغرب", bn: "মাগরিব", time: "৫:৪৫ PM" },
-  { ar: "العشاء", bn: "এশা", time: "৯:১৫ PM" }
+  { name: "ফজর", time: "৫:১৫ AM", icon: "🌅" },
+  { name: "যুহর", time: "১:৪৫ PM", icon: "☀️" },
+  { name: "আসর", time: "৪:৩০ PM", icon: "🌤️" },
+  { name: "মাগরিব", time: "৫:৪৫ PM", icon: "🌇" },
+  { name: "ইশা", time: "৯:১৫ PM", icon: "🌙" }
 ];
 
 // কার্ড তৈরি
@@ -186,9 +186,9 @@ const grid = document.getElementById("prayerGrid");
 
 grid.innerHTML = mosqueData.map(p => `
   <div class="prayer-card">
-    <div class="prayer-names">
-      <span class="prayer-name-ar">${p.ar}</span>
-      <span class="prayer-name-bn">${p.bn}</span>
+    <div class="prayer-info">
+      <div class="icon-box">${p.icon}</div>
+      <div class="prayer-name">${p.name}</div>
     </div>
     <div class="prayer-time">${p.time}</div>
   </div>
