@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#eaf4ee">
+<meta name="theme-color" content="#0d1321">
 <title>আল মাহাদুল আলী | ওয়েবসাইট</title>
 
 <!-- ফন্টস -->
@@ -34,26 +34,36 @@ body {
   flex-direction: column;
 }
 
-/* --- হেডার --- */
+/* --- হেডার (নতুন কালার ও গ্রেডিয়েন্ট) --- */
 header {
-  background: #ffffff;
+  background: linear-gradient(135deg, #090a0f 0%, #151b2b 100%); /* গাঢ় নেভি গ্রেডিয়েন্ট */
   text-align: center;
-  padding: 20px 15px 15px;
-  border-bottom: 2px solid #d1fae5;
+  padding: 25px 15px 20px;
+  border-bottom: 3px solid #0f4c3a;
 }
 
 .arabic-logo {
-  color: var(--primary-green);
-  font-size: 26px;
+  color: #ffffff;
+  font-size: 28px;
   font-family: 'Amiri', serif;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .bangla-title {
-  color: var(--text-main);
+  color: #e2e8f0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0;
+}
+
+/* নতুন তারিখের ডিজাইন */
+.date-text {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 /* --- নেভিগেশন ট্যাব (Tabs) --- */
@@ -96,12 +106,12 @@ main {
 }
 
 .tab-content {
-  display: none; /* ডিফল্টভাবে সব লুকানো থাকবে */
+  display: none; 
   animation: fadeIn 0.4s ease;
 }
 
 .tab-content.active {
-  display: block; /* যে ট্যাবে ক্লিক হবে শুধু সেটি দেখা যাবে */
+  display: block; 
 }
 
 @keyframes fadeIn {
@@ -159,7 +169,7 @@ main {
   background: #ffffff;
   padding: 18px;
   border-radius: 12px;
-  border-left: 4px solid #ef4444; /* লাল রঙের হাইলাইট */
+  border-left: 4px solid #ef4444;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
@@ -189,7 +199,6 @@ main {
   width: 100%;
   height: 200px;
   background-color: #e5e7eb;
-  /* আপনার প্রতিষ্ঠানের ছবি এখানে বসবে */
   background-image: url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=800&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
@@ -216,13 +225,15 @@ footer {
 <header>
   <div class="arabic-logo">المعهد العالي للفقه في الدين</div>
   <h1 class="bangla-title">আল মাহাদুল আলী লিল ফিকহ ফিদ্দীন</h1>
+  <!-- অটোমেটিক তারিখ -->
+  <div class="date-text" id="todayDate"></div>
 </header>
 
 <!-- নেভিগেশন ট্যাব (বাটন) -->
 <div class="nav-tabs">
-  <button class="tab-btn active" onclick="openTab('times')">সময়সূচি</button>
-  <button class="tab-btn" onclick="openTab('notice')">জরুরী এলান</button>
-  <button class="tab-btn" onclick="openTab('about')">আমাদের পরিচয়</button>
+  <button class="tab-btn active" onclick="openTab('times', this)">সময়সূচি</button>
+  <button class="tab-btn" onclick="openTab('notice', this)">জরুরী এলান</button>
+  <button class="tab-btn" onclick="openTab('about', this)">আমাদের পরিচয়</button>
 </div>
 
 <main>
@@ -274,7 +285,13 @@ footer {
 </footer>
 
 <script>
-// ১. নামাজের তথ্য
+// ১. আজকের তারিখ ও বার
+const todayDateElement = document.getElementById("todayDate");
+const today = new Date();
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+todayDateElement.textContent = today.toLocaleDateString('bn-BD', options);
+
+// ২. নামাজের তথ্য
 const mosqueData = [
   { ar: "الفجر", time: "৫:১৫ AM" },
   { ar: "الظهر", time: "১:৪৫ PM" },
@@ -292,8 +309,8 @@ grid.innerHTML = mosqueData.map(p => `
   </div>
 `).join("");
 
-// ২. ট্যাব পরিবর্তন করার ফাংশন
-function openTab(tabName) {
+// ৩. ট্যাব পরিবর্তন করার ফাংশন
+function openTab(tabName, btn) {
   // সব কন্টেন্ট লুকানো
   let contents = document.getElementsByClassName("tab-content");
   for (let i = 0; i < contents.length; i++) {
@@ -308,7 +325,7 @@ function openTab(tabName) {
   
   // ক্লিক করা ট্যাব ও বাটন শো করা
   document.getElementById(tabName).classList.add("active");
-  event.currentTarget.classList.add("active");
+  btn.classList.add("active");
 }
 </script>
 
