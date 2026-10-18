@@ -14,7 +14,6 @@
 <style>
 :root {
   --text-main: #111827;
-  --text-muted: #6b7280;
   --green-primary: #0f4c3a;
 }
 
@@ -23,8 +22,10 @@
 body {
   margin: 0;
   font-family: 'Hind Siliguri', sans-serif;
-  /* ব্যাকগ্রাউন্ড ছবি (এখানে আপনার প্রতিষ্ঠানের ছবি দিতে পারেন) */
-  background-image: url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=1000&auto=format&fit=crop'); 
+  
+  /* এখানে আপনার পছন্দের মসজিদের ছবিটি দেওয়া হলো */
+  background-image: url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=1000&auto=format&fit=crop'); 
+  
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -36,7 +37,7 @@ body {
   position: relative;
 }
 
-/* ছবির ওপর হালকা কালো শেড */
+/* ছবির ওপর একটি হালকা কালো শেড (যাতে সাদা লেখা ফুটে ওঠে) */
 body::before {
   content: '';
   position: absolute;
@@ -45,7 +46,7 @@ body::before {
   z-index: -1;
 }
 
-/* --- হেডার সেকশন (নাম ছোট করা হয়েছে) --- */
+/* --- হেডার সেকশন --- */
 .header-section {
   text-align: center;
   margin-bottom: 20px;
@@ -54,7 +55,7 @@ body::before {
 
 .arabic-logo {
   color: #ffffff;
-  font-size: 28px; /* আগের চেয়ে ছোট */
+  font-size: 28px; 
   font-family: 'Amiri', serif;
   line-height: 1.2;
   margin-bottom: 4px;
@@ -63,7 +64,7 @@ body::before {
 
 .bangla-title {
   color: #b4e197;
-  font-size: 15px; /* আগের চেয়ে ছোট */
+  font-size: 15px; 
   font-weight: 600;
   margin: 0;
   letter-spacing: 0.5px;
@@ -75,6 +76,7 @@ body::before {
   font-size: 14px;
   margin-top: 6px;
   font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 /* --- গ্লাস কার্ড (Glassmorphism) --- */
@@ -113,7 +115,7 @@ body::before {
   padding: 16px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* নাম বামে, সময় ডানে */
+  justify-content: space-between;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   border: 1px solid #f3f4f6;
 }
@@ -121,7 +123,7 @@ body::before {
 /* শুধু আরবি নাম */
 .prayer-name-ar {
   font-family: 'Amiri', serif;
-  font-size: 20px; /* ছোট সাইজ */
+  font-size: 20px; 
   font-weight: 700;
   color: #111827;
 }
@@ -166,7 +168,7 @@ footer {
 </footer>
 
 <script>
-// ১. আজকের তারিখ ও বার অটোমেটিক সেট করা
+// ১. আজকের তারিখ ও বার
 const todayDateElement = document.getElementById("todayDate");
 const today = new Date();
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
